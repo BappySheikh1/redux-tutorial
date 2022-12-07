@@ -1,3 +1,4 @@
+const {createStore} =require('redux')
 // 1. state - count : 0
 // action - increment, decrement, reset
 // reducer
@@ -57,3 +58,15 @@ const counterReducer =(state=initialState , action) =>{
             state;
     }
 }
+
+// store
+const store = createStore(counterReducer)
+
+store.subscribe(()=>{
+    console.log(store.getState());
+})
+store.dispatch(incrementAction())
+store.dispatch(incrementAction())
+store.dispatch(incrementAction())
+store.dispatch(decrementAction())
+store.dispatch(resetAction())
